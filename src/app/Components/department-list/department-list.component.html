@@ -1,0 +1,42 @@
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Operation</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of departments; track item.id) {
+            @if (item.status==true) {
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>
+                    <button (click)="Show(item.id)">show</button>
+                </td>
+            </tr>
+            }
+        }@empty {
+            <tr>
+                <td colspan="3">No Departments Exists</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="alert alert-info">   
+    <strong>department details!</strong>
+    {{deptDetails.id}}-{{deptDetails.name}}-{{deptDetails.loc}}-{{deptDetails.status}}
+</div>
+<div class="alert alert-success">   
+    <strong>Add New Department</strong><br>
+    <input [(ngModel)]="newDept.id" ><br>
+    <input [(ngModel)]="newDept.name" ><br>
+    <select [(ngModel)]="newDept.loc">
+        <option>smart</option>
+        <option>alex</option>
+        <option>mansoura</option>
+    </select><br>
+    <input type="checkbox" [(ngModel)]="newDept.status" ><br>
+    <button (click)="add()">save</button>
+</div>
