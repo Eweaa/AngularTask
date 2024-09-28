@@ -1,16 +1,17 @@
 <div class="alert alert-success">
     <h1>Adding Student</h1>
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">ID</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="ID" [(ngModel)] = "newStudent.id">
-    </div>
+
     <div class="mb-3">
         <label for="Name" class="form-label">Name</label>
         <input type="text" class="form-control" id="Name" placeholder="Name" [(ngModel)] = "newStudent.name">
     </div>
     <div class="mb-3">
         <label for="age" class="form-label">Age</label>
-        <input type="text" class="form-control" id="age" placeholder="age" [(ngModel)] = "newStudent.age">
+        <input type="text" class="form-control" id="age" placeholder="Age" [(ngModel)] = "newStudent.age">
+    </div>
+    <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <input type="text" class="form-control" id="address" placeholder="Address" [(ngModel)] = "newStudent.adddress">
     </div>
 
     <button class="btn btn-outline-success" (click)="Save()">Add Student</button>

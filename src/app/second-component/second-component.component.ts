@@ -11,5 +11,5 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './second-component.component.css'
 })
 export class SecondComponentComponent {
-  std:Student = new Student(10,"Ahmed",23)
+  std:Student = new Student(10,"Ahmed",23, "")
 }

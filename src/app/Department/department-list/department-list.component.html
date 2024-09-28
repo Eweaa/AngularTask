@@ -1,0 +1,130 @@
+<div>
+    <button style="float: right; margin-right: 20px;" class="btn btn-outline-success" (click)="showModal()">Create</button>
+    <table class="table  table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <!-- <th scope="col">Location</th> -->
+            <th scope="col">Tools</th>
+          </tr>
+        </thead>
+        <tbody>
+        @for (item of departments; track item.id; let i = $index)
+        {
+            <tr>
+            <th scope="row">{{i + 1}}</th>
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <!-- <td>{{item.loc}}</td> -->
+            <td>
+              <button class="btn btn-outline-primary mx-2" (click)="detailsModal(item.id)">ℹ️</button>
+              <button class="btn btn-outline-danger mx-2" (click)="deleteModal(item.id)">🗑️</button>
+              <button class="btn btn-outline-warning text-white mx-2" (click)="startEdit(item.id)">🖋️</button>
+            </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+  </div>
+
+
+<dialog [open]="modal">
+    <h4 class="text-success">Create Department</h4>
+
+    <div class="mb-3">
+      <label for="ID" class="form-label">ID</label>
+      <input type="text" class="form-control" id="ID" [(ngModel)]="newDept.id" />
+    </div>
+
+    <div class="mb-3">
+      <label for="Name" class="form-label">Name</label>
+      <input type="email" class="form-control" id="Name" [(ngModel)]="newDept.name" >
+    </div>
+      
+    <div class="mb-3">
+      <label class="form-label">Location</label>
+
+      <select class="form-select" [(ngModel)]="newDept.loc">
+        <option>Smart</option>
+        <option>Alexandria</option>
+        <option>Mansoura</option>
+      </select>
+    </div>
+
+    <div style="display: flex; justify-content: space-around;">
+      <button class="btn btn-outline-success mt-2" (click)="add()">Create</button>
+      <button class="btn btn-outline-danger mt-2" (click)="showModal()">Cancel</button>
+    </div>
+</dialog>
+
+<dialog [open]="delModal">
+    <h4 class="text-danger">Delete Department</h4>
+
+    <div class="mb-3">
+      <label for="ID" class="form-label">ID</label>
+      <input type="text" class="form-control" id="ID" [value]="deptDetails.id" disabled />
+    </div>
+
+    <div class="mb-3">
+      <label for="Name" class="form-label">Name</label>
+      <input type="email" class="form-control" id="Name" [value]="deptDetails.name" disabled>
+    </div>
+
+    <div class="mb-3">
+      <label for="Name" class="form-label">Location</label>
+      <input type="email" class="form-control" id="Name" [value]="deptDetails.loc" disabled>
+    </div>
+     
+
+    <div style="display: flex; justify-content: space-around;">
+      <button class="btn btn-outline-success mt-2" (click)="delete(deptDetails.id)">Delete</button>
+      <button class="btn btn-outline-danger mt-2" (click)="showDeleteModal()">Cancel</button>
+    </div>
+</dialog>
+
+<dialog [open]="detailModal">
+    <h4 class="text-info">Details</h4>
+
+    <div class="mb-3">
+      <label for="ID" class="form-label">ID</label>
+      <input type="text" class="form-control" id="ID" [value]="deptDetails.id" disabled />
+    </div>
+
+    <div class="mb-3">
+      <label for="Name" class="form-label">Name</label>
+      <input type="email" class="form-control" id="Name" [value]="deptDetails.name" disabled>
+    </div>
+
+    <div class="mb-3">
+      <label for="Name" class="form-label">Location</label>
+      <input type="email" class="form-control" id="Name" [value]="deptDetails.loc" disabled>
+    </div>
+     
+
+     <div style="display: flex; justify-content: space-around;">
+      <button class="btn btn-outline-primary mt-2" (click)="ShowdetailsModal()">Close</button>
+    </div> 
+</dialog>
+
+
+<dialog [open]="editModal">
+    <h4 class="text-warning">Edit Department</h4>
+
+    <div class="mb-3">
+      <label for="Name" class="form-label">Name</label>
+      <input type="email" class="form-control" id="Name" [(ngModel)]="editedDepartment.name">
+    </div>
+
+    <div class="mb-3">
+      <label for="Name" class="form-label">Location</label>
+      <input type="email" class="form-control" id="Name" [(ngModel)]="editedDepartment.loc">
+    </div>
+     
+
+     <div style="display: flex; justify-content: space-around;">
+      <button class="btn btn-outline-warning mt-2" (click)="edit()">Edit</button>
+      <button class="btn btn-outline-primary mt-2" (click)="ShoweditModal()">Close</button>
+    </div> 
+</dialog>
