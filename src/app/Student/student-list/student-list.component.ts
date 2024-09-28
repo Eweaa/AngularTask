@@ -16,7 +16,7 @@ import { studentRoutes } from '../../student.routes';
   templateUrl: './student-list.component.html',
   styleUrl: './student-list.component.css'
 })
-export class StudentComponent implements OnInit, OnChanges
+export class StudentComponent implements OnInit
 {
   constructor(public StudentService: StudentServiceService, public router: Router){}
   Students : Array<Student> = [];
@@ -33,11 +33,6 @@ export class StudentComponent implements OnInit, OnChanges
       }
     })
   }
-  
-  ngOnChanges(changes: SimpleChanges): void 
-  {
-    // this.EditForm = this.StudentService.showEditForm();
-  }
 
   detailsID: number = 0;
   editID: number = 0;
@@ -45,14 +40,6 @@ export class StudentComponent implements OnInit, OnChanges
   show(id: number) : void
   {
     this.detailsID = id;
-    // this.StudentService.getStudentByID(id);
-    // for (let i = 0; i < this.Students.length; i++) 
-    // {
-    //   if(this.Students[i].id == id)
-    //   {
-    //     this.DetailedStudent= this.Students[i];
-    //   }
-    // }
   }
 
   details(id: number)
